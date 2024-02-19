@@ -1,6 +1,14 @@
 #include <vector>
 #include <iterator>
 #include <iostream>
+struct dummy
+{
+    
+    short a;
+    short b;
+    dummy():a(1),b(2){}
+    dummy(int na, int nb):a(na),b(nb){}
+};
 using namespace std;
 void prnt(vector<int> &nums_1)
 {
@@ -18,11 +26,14 @@ void prnt(vector<int> &nums_1)
 int removeElement(vector<int>&, int);
 int main()
 {
-    vector<int> nums_1 = {1, 2, 3, 2, 3, 1};
-    int m = 3;
+    int c=3;
+    dummy D;
+    vector<int> nums_1 = {0,1,2};
+    int m = 2;
 
     prnt(nums_1);
-    removeElement(nums_1, m);
+    m=removeElement(nums_1, m);
+    cout<<endl<<m<<endl;
     prnt(nums_1);
 
     return 0;
@@ -31,14 +42,21 @@ int main()
 int removeElement(vector<int>& nums, int val)
 {
     int k=0;
-    for(auto i = nums.begin(); i != nums.end(); ++i)
+     /*for(auto i = nums.begin(); i != nums.end(); ++i)
     {
         if(*i==val)
         {
             k++;
             nums.erase(i);
-            //nums.
+            
         }
+    } */
+     for(auto i=0;i<nums.size();i++)
+    {
+        if(nums[i]!=val)
+            nums[k++]=nums[i];
+        
     }
-    return k;
+    //k=nums.size()-k;
+    return k; 
 }
